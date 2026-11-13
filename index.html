@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3f4730">
+
+    <title>Владимир & Ольга | Свадебное приглашение</title>
+
+    <!-- ШРИФТЫ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- СТИЛИ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="locked">
+
+    <!-- КУРСОР -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- ПРОГРЕСС ПРОКРУТКИ -->
+    <div class="scroll-progress"></div>
+
+
+    <!-- =====================================
+         МУЗЫКАЛЬНОЕ СОПРОВОЖДЕНИЕ
+    ====================================== -->
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="images/music.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- =====================================
+         00. ПОЛНОЦВЕТНЫЙ ЭКРАН-ОБЛОЖКА (ВО ВЕСЬ ЭКРАН)
+    ====================================== -->
+
+    <div id="invitation-gate">
+        <div class="gate-card-wrapper" id="open-letter">
+            <img src="images/invitation.png" alt="Свадебное приглашение — Владимир и Ольга" class="gate-cover-image">
+        </div>
+    </div>
+
+
+    <!-- =====================================
+         ОСНОВНОЙ САЙТ
+    ====================================== -->
+
+    <main id="main-content">
+
+
+        <!-- =================================
+             01. ГЛАВНЫЙ ЭКРАН (HERO С ЛЮСТРОЙ И СВЕЧАМИ)
+        ================================== -->
+
+        <section class="hero-section-clean parchment-section">
+
+            <!-- ВЕРХНИЙ ДЕКОР: ПИОНЫ И ЛЮСТРА -->
+            <div class="hero-top-decor">
+                <img src="images/peonies-top.png" class="hero-flower-top" alt="Пионы">
+                <img src="images/chandelier.png" class="hero-chandelier" alt="Люстра">
+            </div>
+
+            <!-- ИМЕНА И ТЕКСТ -->
+            <div class="hero-content-clean reveal-up">
+                <p class="hero-script-title">
+                    Wedding day
+                </p>
+                <h1 class="hero-names">
+                    Владимир <span>and</span> Ольга
+                </h1>
+            </div>
+
+            <!-- НИЖНИЙ ДЕКОР: СВЕЧИ СЛЕВА И СПРАВА -->
+            <div class="hero-bottom-decor reveal-up">
+                <img src="images/candles.png" class="hero-candles candles-left" alt="Свечи">
+
+                <div class="hero-scroll-wrapper">
+                    <p class="hero-subtitle">
+                        Листайте вниз, чтобы узнать все подробности
+                    </p>
+                    <div class="scroll-arrow-down">
+                        ↓
+                    </div>
+                </div>
+
+                <img src="images/candles.png" class="hero-candles candles-right" alt="Свечи">
+            </div>
+
+            <!-- РВАНЫЙ КРАЙ БУМАГИ -->
+            <div class="torn-edge-bottom"></div>
+
+        </section>
+
+
+        <!-- =================================
+             02. ПРИГЛАШЕНИЕ (ВИНТАЖНАЯ КАРТОЧКА С PAPPER.PNG)
+        ================================== -->
+
+        <section class="invitation-bg-section parchment-section">
+
+            <!-- БАННЕР С ФОНОМ PAPPER.PNG -->
+            <div class="invitation-landscape-banner reveal-up">
+                
+                <div class="invitation-card-overlay">
+
+                    <p class="card-script-header">Дорогие</p>
+                    <p class="card-small-caps">ДРУЗЬЯ И РОДНЫЕ!</p>
+
+                    <div class="card-main-invitation">
+                        <p>ПРИГЛАШАЕМ ВАС</p>
+                        <p>НА ГЛАВНОЕ ТОРЖЕСТВО</p>
+                        <p>В НАШЕЙ ЖИЗНИ —</p>
+                        <p>НАШУ СВАДЬБУ!</p>
+                    </div>
+
+                    <p class="card-date-script">14.05.2027</p>
+
+                    <div class="card-footer-text">
+                        <p>МЫ БУДЕМ СЧАСТЛИВЫ</p>
+                        <p>РАЗДЕЛИТЬ С ВАМИ РАДОСТЬ</p>
+                        <p>ЭТОГО НЕЗАБЫВАЕМОГО ДНЯ</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             03. КАЛЕНДАРЬ И ФОТО-БЛОК С РАЗНЫМИ ФОРМАТАМИ
+        ================================== -->
+
+        <section class="timing-section parchment-section">
+
+            <!-- СЕТКА КАЛЕНДАРЯ -->
+            <div class="calendar-card reveal-up">
+                
+                <h3 class="calendar-month">Май 2027</h3>
+
+                <div class="calendar-grid">
+                    <span class="day-head">Пн</span><span class="day-head">Вт</span><span class="day-head">Ср</span><span class="day-head">Чт</span><span class="day-head">Пт</span><span class="day-head">Сб</span><span class="day-head">Вс</span>
+                    
+                    <span></span><span></span><span></span><span></span><span></span><span>1</span><span>2</span>
+                    <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                    <span>10</span><span>11</span><span>12</span><span>13</span><span class="wedding-day-heart">14 ♡</span><span>15</span><span>16</span><span>17</span>
+                    <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
+                    <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+                </div>
+
+            </div>
+
+            <!-- БЛОК С РАЗНЫМИ ФОРМАТАМИ ФОТО -->
+            <div class="photo-story-block reveal-up">
+                <div class="photo-pair-grid">
+                    <div class="story-frame-mini frame-portrait">
+                        <img src="images/photo_1.jpg" alt="Фото пары 1">
+                    </div>
+                    <div class="story-frame-mini frame-landscape">
+                        <img src="images/photo_2.jpg" alt="Фото пары 2">
+                    </div>
+                </div>
+                <p class="story-intro-text">
+                    И в этот прекрасный день мы хотим вместе с вами разделить яркие мгновения и искренние улыбки!
+                </p>
+                <h3 class="story-month-script">наш май</h3>
+            </div>
+
+
+            <!-- =================================
+                 04. ТАЙМИНГ (ИЗОБРАЖЕНИЕ TIMELINE.PNG)
+            ================================== -->
+
+            <div class="timeline-image-container reveal-up">
+                <img src="images/timeline.png" alt="Тайминг свадьбы" class="timeline-custom-img">
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             05. ДЕТАЛИ ПРАЗДНИКА (СО СВЕЧАМИ)
+        ================================== -->
+
+        <section class="details-section parchment-section">
+
+            <div class="section-heading reveal-text">
+                <p class="small-cap">A FEW IMPORTANT WORDS</p>
+                <h2 class="script-heading">Детали праздника</h2>
+                <div class="simple-divider"></div>
+            </div>
+
+            <div class="details-grid">
+
+                <article class="detail-letter reveal-up">
+                    <img src="images/candles.png" class="detail-candles-decor" alt="Свечи с бантами">
+                    <h3>Подарки</h3>
+                    <p>Самый ценный подарок для нас — ваше присутствие. Но если вы хотите сделать нам приятно, будем рады вкладу в наш семейный бюджет.</p>
+                </article>
+
+                <article class="detail-letter reveal-up">
+                    <img src="images/candles.png" class="detail-candles-decor" alt="Свечи с бантами">
+                    <h3>Дети</h3>
+                    <p>Пожалуйста, оставьте своих деток в надёжных руках на вечер торжества, так как локация не предполагает детской зоны.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             06. ДРЕСС-КОД С АТЛАСНЫМИ ШЕЛКОВЫМИ ТЕКСТУРАМИ И ФОТО
+        ====================================== -->
+
+        <section class="dress-code-clean parchment-section">
+
+            <div class="section-heading reveal-text">
+                <h2 class="script-heading">Дресс-код</h2>
+                <p class="dress-code-intro">
+                    Мы очень старались сделать праздник красивым, и будем рады, если в своих нарядах вы поддержите цветовую гамму нашей свадьбы в атласных и шелковых фактурах:
+                </p>
+            </div>
+
+            <div class="satin-palette-container reveal-up">
+                
+                <div class="satin-card">
+                    <div class="satin-swatch satin-champagne"></div>
+                    <span class="satin-title">Шампанское</span>
+                </div>
+
+                <div class="satin-card">
+                    <div class="satin-swatch satin-rose"></div>
+                    <span class="satin-title">Пыльная роза</span>
+                </div>
+
+                <div class="satin-card">
+                    <div class="satin-swatch satin-sage"></div>
+                    <span class="satin-title">Шалфей</span>
+                </div>
+
+                <div class="satin-card">
+                    <div class="satin-swatch satin-blue"></div>
+                    <span class="satin-title">Голубой шелк</span>
+                </div>
+
+            </div>
+
+            <!-- МЕСТО ДЛЯ ОДНОГО ФОТО В ДРЕСС-КОДЕ -->
+            <div class="dress-code-photo-block reveal-up">
+                <div class="dress-code-photo-frame">
+                    <img src="images/dresscode-example.png" alt="Пример дресс-кода">
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             07. МЕСТО ПРОВЕДЕНИЯ
+        ================================== -->
+
+        <section class="location-section">
+
+            <div class="section-heading reveal-text">
+                <p class="small-cap">OUR ROYAL VENUE</p>
+                <h2 class="script-heading" style="color: white;">Место проведения</h2>
+                <p>
+                    Замок Green House<br>Зал «Средневековый», 1 этаж
+                </p>
+            </div>
+
+            <div class="location-map reveal-up">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Abb4b9942127e293f39fc5246e5389343402ea3488632fdffd652ac545d14786f&amp;source=constructor" width="100%" height="100%" frameborder="0" title="Карта места проведения" loading="lazy" allowfullscreen></iframe>
+            </div>
+
+            <a href="https://yandex.ru/maps/-/CXv~eUnt" target="_blank" rel="noopener noreferrer" class="map-link">
+                Посмотреть маршрут ↗
+            </a>
+
+        </section>
+
+
+        <!-- =================================
+             08. RSVP — КНОПКА ПОДТВЕРЖДЕНИЯ
+        ================================== -->
+
+        <section class="rsvp-section parchment-section">
+
+            <div class="section-heading reveal-text">
+                <p class="small-cap">PLEASE REPLY</p>
+                <h2 class="script-heading">Будем ждать вас!</h2>
+                <p>
+                    Пожалуйста, подтвердите своё присутствие до 1 апреля 2027 года.
+                </p>
+            </div>
+
+            <div class="rsvp-button-wrapper reveal-up">
+                <a href="https://forms.gle/2YrKC9gc36pdFMq19" class="rsvp-button" target="_blank" rel="noopener noreferrer">
+                    <span>Подтвердить присутствие</span>
+                    <span>↗</span>
+                </a>
+            </div>
+
+
+            <!-- =================================
+                 09. ЧАТ ГОСТЕЙ
+            ================================== -->
+
+            <div class="guest-chat reveal-up">
+                <div class="guest-chat-line"></div>
+                <p class="guest-chat-caption">LET'S STAY CONNECTED</p>
+                <h2 class="script-heading" style="margin-bottom: 15px;">Чат гостей</h2>
+                <p class="guest-chat-text">
+                    Хотите познакомиться с другими гостями, задать вопросы или просто разделить ожидание нашего праздника?
+                </p>
+                <a href="ВСТАВЬТЕ_ССЫЛКУ_НА_ЧАТ" class="guest-chat-button" target="_blank" rel="noopener noreferrer">
+                    <span class="chat-button-text">Присоединиться к чату</span>
+                    <span class="chat-button-arrow">↗</span>
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             10. ДО ВСТРЕЧИ / ТАЙМЕР ОБРАТНОГО ОТСЧЕТА
+        ================================== -->
+
+        <section class="countdown-section parchment-section">
+
+            <div class="section-heading reveal-text">
+                <p class="small-cap">UNTIL OUR BIG DAY</p>
+                <h2 class="script-heading">До встречи осталось</h2>
+                <div class="simple-divider"></div>
+            </div>
+
+            <div class="countdown-card reveal-up">
+                <div class="countdown-timer" id="countdown" data-date="2027-05-14T15:00:00+05:00">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">дни</span>
+                    </div>
+                    <span class="countdown-colon">:</span>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">часы</span>
+                    </div>
+                    <span class="countdown-colon">:</span>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">минуты</span>
+                    </div>
+                    <span class="countdown-colon">:</span>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">секунды</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             11. ФИНАЛЬНЫЙ БЛОК
+        ================================== -->
+
+        <section class="final-section">
+            <div class="final-content">
+                <p class="final-script">До скорой встречи!</p>
+                <div class="final-divider"></div>
+                <h2>Владимир <span>&</span> Ольга</h2>
+                <p class="final-date">14 · 05 · 2027</p>
+            </div>
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>С любовью, Владимир & Ольга</p>
+            <span>2027</span>
+        </footer>
+
+    </main>
+
+    <!-- СКРИПТ АВТОМАТИЧЕСКОГО ОТСЧЕТА ВРЕМЕНИ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownEl = document.getElementById('countdown');
+            if (!countdownEl) return;
+
+            const targetDateStr = countdownEl.getAttribute('data-date');
+            const targetTime = new Date(targetDateStr).getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const difference = targetTime - now;
+
+                if (difference <= 0) {
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+
+    <!-- БИБЛИОТЕКИ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

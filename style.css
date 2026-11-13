@@ -1,0 +1,1066 @@
+/* =========================================
+   01. ЦВЕТОВАЯ ПАЛИТРА И ПЕРЕМЕННЫЕ
+========================================= */
+
+:root {
+    --sage-dark: #3f4730;      /* Глубокий лесной зеленый */
+    --sage-main: #4a5339;      /* Лесной оливковый */
+    --sage-light: #727c5d;     
+    
+    --gold: #c4a977;           /* Состаренное золото */
+    --gold-light: #e5d5a8;
+    
+    --paper-light: #faf6eb;    /* Светлый пергамент */
+    --cream-card: #f3ece1;     
+    --peony-pink: #d8a2ad;     
+    
+    --ink-dark: #2c2f2b;       
+    --muted: #827966;
+}
+
+
+/* =========================================
+   02. БАЗОВЫЕ СТИЛИ
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    background-color: var(--paper-light);
+    color: var(--ink-dark);
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--gold);
+    color: white;
+}
+
+
+/* =========================================
+   03. ФОН ПЕРГАМЕНТА И ВИНТАЖНЫЕ ДЕТАЛИ
+========================================= */
+
+.parchment-section {
+    position: relative;
+    background-color: var(--paper-light);
+    background-image: 
+        radial-gradient(ellipse at 15% 10%, rgba(196,169,119,0.08), transparent 45%),
+        radial-gradient(ellipse at 85% 90%, rgba(74,83,57,0.06), transparent 40%),
+        url('images/paper-light.jpg');
+    background-size: cover;
+}
+
+.small-cap {
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.simple-divider {
+    position: relative;
+    width: 65px;
+    height: 1px;
+    margin: 24px auto;
+    background: var(--gold);
+}
+
+.simple-divider::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--gold);
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.script-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: 64px;
+    color: var(--sage-dark);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+
+/* =========================================
+   04. ПРОГРЕСС-БАР И КУРСОР
+========================================= */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    z-index: 9999;
+    background: linear-gradient(90deg, var(--sage-main), var(--gold), var(--sage-light));
+}
+
+.cursor-dot, .cursor-outline {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    z-index: 9998;
+}
+
+.cursor-outline {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(196,169,119,0.7);
+    z-index: 9997;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cursor-dot, .cursor-outline {
+        display: block;
+    }
+}
+
+
+/* =========================================
+   05. ПОЛНОЦВЕТНЫЙ ЭКРАН-ОБЛОЖКА (ВО ВЕСЬ ЭКРАН)
+========================================= */
+
+#invitation-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background-color: #3f4730;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.gate-card-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
+}
+
+.gate-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .gate-card-wrapper {
+        width: min(420px, 90vw);
+        height: min(85vh, 850px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+        border: 1px solid rgba(196, 169, 119, 0.4);
+    }
+    .gate-cover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.gate-card-wrapper.is-open {
+    transform: scale(1.15);
+    opacity: 0;
+}
+
+#invitation-gate.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* =========================================
+   06. ГЛАВНЫЙ ЭКРАН (HERO С ЛЮСТРОЙ И СВЕЧАМИ)
+========================================= */
+
+.hero-section-clean {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 5px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-top-decor {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-flower-top {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+}
+
+.hero-chandelier {
+    width: 130px;
+    height: auto;
+    margin-top: 15px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.07));
+}
+
+.hero-content-clean {
+    z-index: 3;
+    margin: 15px 0;
+}
+
+.hero-script-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 6vw, 75px);
+    color: var(--sage-main);
+    line-height: 1;
+}
+
+.hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    color: var(--ink-dark);
+    margin: 12px 0;
+    letter-spacing: 1px;
+}
+
+.hero-names span {
+    font-family: 'Great Vibes', cursive;
+    color: var(--gold);
+    display: block;
+    font-size: clamp(38px, 4.5vw, 55px);
+    margin: 4px 0;
+}
+
+.hero-bottom-decor {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 25px;
+}
+
+.hero-candles {
+    width: 70px;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+}
+
+.candles-right {
+    transform: scaleX(-1);
+}
+
+.hero-scroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--muted);
+    letter-spacing: 1px;
+    max-width: 220px;
+    line-height: 1.35;
+}
+
+.scroll-arrow-down {
+    font-size: 24px;
+    color: var(--gold);
+    margin-top: 8px;
+    animation: arrowDown 2.5s infinite;
+}
+
+@keyframes arrowDown {
+    50% { transform: translateY(6px); opacity: 0.5; }
+}
+
+
+/* =========================================
+   07. ПРИГЛАШЕНИЕ С ФОНОМ PAPPER.PNG
+========================================= */
+
+.invitation-bg-section {
+    padding: 0px 20px 90px;
+    text-align: center;
+}
+
+.invitation-landscape-banner {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 60px 15px;
+    
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    
+    background-image: url('images/papper.png');
+    background-size: 100% 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    mix-blend-mode: multiply;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invitation-card-overlay {
+    position: relative;
+    z-index: 2;
+    background: rgba(250, 246, 235, 0.96); 
+    backdrop-filter: blur(3px);
+    border-radius: 35px;
+    padding: 50px 22px;
+    width: 92%;
+    max-width: 390px;
+    margin: 0 auto;
+    
+    border: 1px solid rgba(196, 169, 119, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.card-script-header {
+    font-family: 'Great Vibes', cursive;
+    font-size: 54px;
+    color: var(--sage-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.card-small-caps {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #4a453b;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.card-main-invitation {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #38332b;
+    line-height: 1.8;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.card-main-invitation p {
+    margin-bottom: 4px;
+}
+
+.card-date-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    color: var(--sage-dark);
+    margin: 20px 0;
+    line-height: 1;
+}
+
+.card-footer-text {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #4a453b;
+    line-height: 1.75;
+    font-weight: 500;
+}
+
+.card-footer-text p {
+    margin-bottom: 3px;
+}
+
+
+/* =========================================
+   08. КАЛЕНДАРЬ И ФОТО-БЛОК С РАЗНЫМИ ФОРМАТАМИ
+========================================= */
+
+.timing-section {
+    padding: 80px 20px;
+}
+
+.calendar-card {
+    max-width: 320px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.calendar-month {
+    font-family: 'Great Vibes', cursive;
+    font-size: 46px;
+    color: var(--sage-dark);
+    margin-bottom: 18px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+}
+
+.day-head {
+    font-weight: 600;
+    color: var(--sage-main);
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.wedding-day-heart {
+    background: var(--peony-pink);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: auto;
+}
+
+.photo-story-block {
+    max-width: 520px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.photo-pair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.story-frame-mini {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(196, 169, 119, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    background: white;
+    padding: 6px;
+}
+
+.frame-portrait img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.frame-landscape {
+    margin-top: 35px;
+}
+
+.frame-landscape img {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.story-intro-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--ink-dark);
+    line-height: 1.6;
+    max-width: 440px;
+    margin: 0 auto 20px;
+}
+
+.story-month-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    color: var(--sage-dark);
+    line-height: 1;
+}
+
+
+/* =========================================
+   09. КАРТИНКА ТАЙМИНГА (TIMELINE.PNG)
+========================================= */
+
+.timeline-image-container {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.timeline-custom-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    filter: none;
+}
+
+
+/* =========================================
+   10. ДЕТАЛИ И СВЕЧИ
+========================================= */
+
+.details-section {
+    padding: 90px 20px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 680px; 
+    margin: 0 auto;
+}
+
+.detail-letter {
+    position: relative;
+    background: #fffdf7;
+    border: 1px solid #e2d8c3;
+    padding: 55px 25px 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.detail-candles-decor {
+    width: 36px;
+    height: auto;
+    margin: 0 auto 15px;
+}
+
+.detail-letter h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    color: var(--sage-dark);
+    margin-bottom: 15px;
+}
+
+.detail-letter p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: #655d4f;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   11. ДРЕСС-КОД (С ПОЛНЫМ ОТОБРАЖЕНИЕМ ФОТО)
+========================================= */
+
+.dress-code-clean {
+    padding: 90px 20px;
+}
+
+.dress-code-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: #655d4f;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 45px;
+}
+
+.satin-palette-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 780px;
+    margin: 0 auto 45px;
+}
+
+.satin-card {
+    background: #fffdf7;
+    border: 1px solid rgba(196, 169, 119, 0.4);
+    border-radius: 16px;
+    padding: 15px 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+}
+
+.satin-swatch {
+    width: 100%;
+    height: 110px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.6), inset 0 -4px 8px rgba(0,0,0,0.15);
+}
+
+.satin-champagne {
+    background: linear-gradient(135deg, #f2ead8 0%, #d9ccb4 40%, #eddcc3 70%, #c8b99d 100%);
+}
+
+.satin-rose {
+    background: linear-gradient(135deg, #e3c4c7 0%, #bf9297 40%, #d9b5b9 70%, #a87980 100%);
+}
+
+.satin-sage {
+    background: linear-gradient(135deg, #c5cebc 0%, #98a68c 40%, #b8c4ae 70%, #7d8c72 100%);
+}
+
+.satin-blue {
+    background: linear-gradient(135deg, #b8cae0 0%, #89a3c2 40%, #a7bce0 70%, #6c89ad 100%);
+}
+
+.satin-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--sage-dark);
+    display: block;
+    font-weight: 600;
+}
+
+.dress-code-photo-block {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dress-code-photo-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(196, 169, 119, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    background: white;
+    padding: 6px;
+}
+
+.dress-code-photo-frame img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Картинка влезает целиком без обрезов */
+    border-radius: 14px;
+}
+
+
+/* =========================================
+   12. МЕСТО ПРОВЕДЕНИЯ И RSVP КНОПКА
+========================================= */
+
+.location-section {
+    padding: 90px 20px;
+    background: var(--sage-dark);
+    color: white;
+}
+
+.location-section .section-heading h2 {
+    color: white;
+}
+
+.location-section .section-heading p {
+    color: rgba(255,255,255,0.8);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+}
+
+.location-map {
+    max-width: 800px;
+    height: 400px;
+    margin: 40px auto 30px;
+    border: 3px solid var(--gold);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.map-link {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.map-link:hover {
+    color: white;
+}
+
+.rsvp-section {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.rsvp-button-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.rsvp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--sage-dark);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    border: 1px solid rgba(196, 169, 119, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.rsvp-button:hover {
+    background: var(--sage-main);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+
+/* =========================================
+   13. ЧАТ ГОСТЕЙ
+========================================= */
+
+.guest-chat {
+    max-width: 550px;
+    margin: 60px auto 0;
+    padding: 45px 25px;
+    background: #fffdf7;
+    border: 1px solid #e2d8c3;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.guest-chat-line {
+    width: 35px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+}
+
+.guest-chat-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.guest-chat h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    color: var(--sage-dark);
+    margin-bottom: 15px;
+}
+
+.guest-chat-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: #655d4f;
+    margin-bottom: 25px;
+}
+
+.guest-chat-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sage-dark);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: background 0.3s;
+}
+
+.guest-chat-button:hover {
+    background: var(--sage-main);
+}
+
+
+/* =========================================
+   14. ТАЙМЕР ОБРАТНОГО ОТСЧЕТА
+========================================= */
+
+.countdown-section {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.countdown-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: rgba(255, 253, 247, 0.95);
+    border: 1px solid rgba(196, 169, 119, 0.4);
+    border-radius: 35px;
+    padding: 35px 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+}
+
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 65px;
+}
+
+.countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 500;
+    color: var(--sage-dark);
+    line-height: 1.1;
+}
+
+.countdown-colon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 400;
+    color: var(--gold);
+    margin-top: -16px;
+}
+
+.countdown-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-top: 6px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   15. ФИНАЛ И ПОДВАЛ
+========================================= */
+
+.final-section {
+    padding: 100px 20px;
+    background: var(--sage-dark);
+    background-image: url('images/paper-dark.jpg');
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+.final-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 6vw, 68px);
+    color: var(--gold-light);
+}
+
+.final-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 55px);
+    font-weight: 300;
+    margin: 25px 0;
+}
+
+.final-section h2 span {
+    font-family: 'Great Vibes', cursive;
+    color: var(--gold-light);
+}
+
+.final-date {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: var(--gold-light);
+}
+
+.footer {
+    padding: 30px 20px;
+    background: #1f2518;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    font-size: 11px;
+}
+
+.footer p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+}
+
+.footer span {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   16. АНИМАЦИИ
+========================================= */
+
+.reveal-up, .reveal-text {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+/* =========================================
+   17. МОБИЛЬНАЯ АДАПТАЦИЯ
+========================================= */
+
+@media (max-width: 768px) {
+    .hero-section-clean {
+        padding: 25px 15px 15px;
+        justify-content: space-around;
+    }
+    .hero-flower-top {
+        width: 110%;
+        margin-left: -5%;
+    }
+    .hero-chandelier {
+        width: 100px;
+        margin-top: 5px;
+    }
+    .hero-script-title {
+        font-size: 44px;
+    }
+    .hero-names {
+        font-size: 34px;
+        margin: 5px 0;
+    }
+    .hero-names span {
+        font-size: 34px;
+        margin: 2px 0;
+    }
+    .hero-bottom-decor {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    .hero-candles {
+        width: 45px;
+    }
+    .hero-subtitle {
+        font-size: 13px;
+        max-width: 180px;
+    }
+    .frame-portrait img {
+        height: 220px;
+    }
+    .frame-landscape {
+        margin-top: 25px;
+    }
+    .frame-landscape img {
+        height: 150px;
+    }
+    .satin-palette-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .satin-swatch {
+        height: 95px;
+    }
+    .dress-code-photo-frame img {
+        height: auto;
+    }
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .location-map {
+        height: 300px;
+    }
+    .invitation-landscape-banner {
+        padding: 40px 10px;
+    }
+    .invitation-card-overlay {
+        padding: 35px 15px;
+        border-radius: 25px;
+        width: 95%;
+    }
+    .card-script-header {
+        font-size: 42px;
+    }
+    .card-date-script {
+        font-size: 38px;
+    }
+}
